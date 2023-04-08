@@ -1,0 +1,32 @@
+table {
+  margin: auto;
+}
+
+caption {
+  margin: 15px 0;
+}
+
+table,
+td {
+  border: 2px solid rgb(11, 7, 230);
+  border-collapse: collapse;
+}
+
+.cell-hamster img {
+  display: inline-block;
+  vertical-align: middle;
+  transform: rotate(180deg);
+  filter: hue-rotate(300deg);
+}
+
+tr:nth-child(1) {
+  background-color: #867b3d;
+}
+
+tr:nth-child(2) {
+  background-color: #619dc5;
+}
+
+tr:nth-child(3) {
+  background-color: #c573cf;
+}
