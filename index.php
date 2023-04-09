@@ -1,62 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Урок 3-4, слайд 25</title>
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/main.css">
+  <title>О себе</title>
 </head>
+<?php
+include_once './include/time_theme.php';
+?>
 
-<body style="width:600px">
-  <b>Задание 1. Выведите столбец чисел от 5 до 13.<br><br>
-    Результат:</b><br>
-  <?php
-  for ($i = 5; $i <= 13; $i++) {
-    echo "$i" . '<br>';
-  } ?>
-  <hr>
-  <b>Задание 2. Дано число $num=1000. Делите его на 2 столько раз, пока результат деления не станет меньше 50. Какое число получится? Посчитайте количество итераций, необходимых для этого (итерация - это проход цикла). Решите задачу сначала через цикл while, а потом через цикл for.<br><br>
-    Решение через цикл while<br>
-    Результат:</b><br>
-  <?php
-  $num = 1000;
-  $iteration = 0;
-  while ($num > 50) {
-    $iteration++;
-    $num = $num / 2;
-  }
-  echo "Последнее получаемое число: $num<br>";
-  echo "Количество итераций: $iteration<br><br>";
-  ?>
-  <b>Решение через цикл for<br>
-    Результат:</b><br>
-  <?php
-  $iteration = 0;
-  for ($num = 1000; $num > 50; $iteration++) {
-    $num = $num / 2;
-  }
-  echo "Последнее получаемое число: $num<br>";
-  echo "Количество итераций: $iteration<br>";
-  ?>
-  <hr>
-  <b>Задание 3. Необходимо создать переменную ($i) и передавать в нее значение. Если в переменную положить 0, то на экране должна отображаться строка со значением «0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10». Если переменная равна 1, то на экране отображается строка «0, 1, 2, 3, 4, 5, 6, 7, 8, 9». Если переменная равна 2, то на экране отображается строка «0, 1, 2, 3, 4, 5, 6, 7, 8». Если переменная равна 3, то на экране отображается строка «0, 1, 2, 3, 4, 5, 6, 7» и так далее, до i=10.<br><br></b>
-  <?php
-  $i = 5;
-  echo '$i= ' . $i . '<br><br>';
-  ?>
-  <b>Результат:</b><br>
-  <?php
-  for ($n = 0; $n <= 10 - $i; $n++) {
-    if ($n == 0)
-      echo $n;
-    else
-      echo ', ' . "$n";
-  }
-  if ($i > 10)
-    echo "Ошибка! Значение выходит за предел условия (не больше 10).";
-  ?>
-  <hr>
+<body class="<?php echo $themes ?>">
+  <header class="<?php echo $themes ?>">
+    <nav>
+      <a href="index.php">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+          <path d="M218 246a1 1 0 0 0-1 1v26a1 1 0 0 0 1 1 1 1 0 0 0 1-1v-26a1 1 0 0 0-1-1z" style="fill:#fff;" transform="translate(-204 -244)" />
+          <path d="M219 258a1 1 0 0 0-1 1 1 1 0 0 0 1 1h14a1 1 0 0 0 1-1 1 1 0 0 0-1-1zM219 252a1 1 0 0 0-1 1 1 1 0 0 0 1 1h14a1 1 0 0 0 1-1 1 1 0 0 0-1-1z" style="fill:#fff;fill-opacity:1;" transform="translate(-204 -244)" />
+          <path d="M209 246c-1.645 0-3 1.355-3 3v22c0 1.645 1.355 3 3 3h22c1.645 0 3-1.355 3-3v-22c0-1.645-1.355-3-3-3h-12zm0 2h22c.564 0 1 .436 1 1v22c0 .564-.436 1-1 1h-22c-.564 0-1-.436-1-1v-22c0-.564.436-1 1-1z" style="fill:#fff;fill-opacity:1;" transform="translate(-204 -244)" />
+        </svg>
+      </a>
+      <ul class="menu">
+        <li><a href="table_animals.php" class="link-menu">Таблица Животные</a></li>
+        <li><a href="form.php" class="link-menu">Форма</a></li>
+        <li><a href="flex.php" class="link-menu">FLEXBOX/GRID</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <?php
+    //echo date('H:i:s'); Проверка текущего времени
+    // var_dump(gmdate("H:i:s", $sec)); //gmdate форматирование по Гринвичу для отладки 
+    ?>
+    <div class="description-block">
+      <div class="block-photo">
+        <img src="./img/my_photo.jpg" alt="Глазко Александр фото">
+      </div>
+      <div class="block-info">
+        <div class="block-name">
+          <h1>Александр Глазко</h1>
+        </div>
+        <div class="main-text-block">
+          <div class="text-block">
+            Работаю 3 года системным администратором, отучился и имею дипломы на среднее специальное "Техническое
+            обслуживание средств вычислительной техники и компьютерных сетей" и высшее "Программная инженерия"
+            образование. Интересуюсь различными технологиями, в свободное время люблю кататься на скейте и рисовать.
+          </div>
+          <div class="text-block">
+            Все супер! Атмосфера стимулирует к обучению, радует, что есть практика прямо во время обучения, это
+            позволяет лучше закрепить и разобрать тему урока.
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2>Достопримечательности Красноярска</h2>
+    <div class="gallery-gorizontal-block">
+      <div class="card">
+        <div class="picture-card-block"><img src="./img/gallery/03.jpg" alt="Символ Красноярска — Часовня Параскевы Пятницы"></div>
+        <div class="picture-description">Символ Красноярска — Часовня Параскевы Пятницы</div>
+      </div>
+      <div class="card">
+        <div class="picture-card-block"><img src="./img/gallery/05.jpg" alt="Коммунальный мост через Енисей"></div>
+        <div class="picture-description">Коммунальный мост через Енисей</div>
+      </div>
+      <div class="card">
+        <div class="picture-card-block"><img src="./img/gallery/33.jpg" alt="Церковь Преображения Господня"></div>
+        <div class="picture-description">Церковь Преображения Господня</div>
+      </div>
+      <div class="card">
+        <div class="picture-card-block"><img src="./img/gallery/42.jpg" alt="Надпись «Енисейская Сибирь» на склоне под жилым комплексом «Орбита»"></div>
+        <div class="picture-description">Надпись «Енисейская Сибирь» на склоне под жилым комплексом «Орбита»</div>
+      </div>
+    </div>
+    <h2>Достопримечательности Красноярского края</h2>
+    <div class="gallery-vertical-block">
+      <div class="card">
+        <div class="picture-card-block"><img src="./img/gallery/fan-park-bobrovyy-log.jpg" alt="Национальный парк «Красноярские Столбы»"></div>
+        <div class="picture-description">Национальный парк «Красноярские Столбы»</div>
+      </div>
+      <div class="card">
+        <div class="picture-card-block"><img src="./img/gallery/peshchera-bolshaya-oreshnaya.jpg" alt="Пещера Большая Орешная"></div>
+        <div class="picture-description">Пещера Большая Орешная</div>
+      </div>
+      <div class="card">
+        <div class="picture-card-block"><img src="./img/gallery/sayano-shushenskaya-ges.jpg" alt="Саяно-Шушенская ГЭС">
+        </div>
+        <div class="picture-description">Саяно-Шушенская ГЭС</div>
+      </div>
+      <div class="card">
+        <div class="picture-card-block"><img src="./img/gallery/zapovednik-stolby.jpg" alt="Фан-парк «Бобровый лог»">
+        </div>
+        <div class="picture-description">Фан-парк «Бобровый лог»</div>
+      </div>
+    </div>
+  </main>
 </body>
 
 </html>

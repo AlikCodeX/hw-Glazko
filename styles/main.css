@@ -1,0 +1,162 @@
+h1 {
+  margin: 0 15px;
+}
+
+h2 {
+  text-align: center;
+  margin: 0 15px;
+}
+
+.description-block {
+  display: flex;
+}
+
+.block-photo img {
+  width: 350px;
+  margin: 0 30px;
+}
+
+.block-name {
+  text-align: center;
+  color: #fff;
+}
+
+.main-text-block {
+  display: flex;
+}
+
+.text-block {
+  width: 50%;
+  margin: 15px;
+}
+
+.gallery-gorizontal-block {
+  padding: 15px 7.5px 30px 7.5px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.gallery-vertical-block {
+  margin: 0 15px;
+  padding: 15px 7.5px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 30px;
+  row-gap: 30px;
+}
+
+.card {
+  display: grid;
+  background-color: #e7e7e7;
+}
+
+.gallery-gorizontal-block .card {
+  margin: 0 15px;
+}
+
+.picture-card-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+
+.picture-description {
+  color: black;
+  text-shadow: none;
+  line-height: 1;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0 15px 15px 15px;
+}
+
+.picture-card-block img {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width:360px) {
+
+  .gallery-gorizontal-block,
+  .gallery-vertical-block {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 30px;
+  }
+
+  .main-text-block {
+    flex-direction: column;
+  }
+
+  .text-block {
+    width: auto;
+  }
+}
+
+@media (min-width:361px) and (max-width:576px) {
+  .main-text-block {
+    flex-direction: column;
+  }
+
+  .text-block {
+    width: auto;
+  }
+
+  .picture-description {
+    font-size: 14pt;
+  }
+
+  .gallery-gorizontal-block,
+  .gallery-vertical-block {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 30px;
+  }
+}
+
+@media (max-width:768px) {
+  .description-block {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .block-photo img {
+    width: 250px;
+  }
+
+  .main-text-block {
+    padding: 0 10px;
+  }
+}
+
+@media (min-width:577px) and (max-width:1200px) {
+  .gallery-gorizontal-block {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 30px;
+  }
+
+  .picture-description {
+    font-size: 11pt;
+  }
+}
+
+@media (min-width:769px) {
+  .description-block {
+    padding: 15px 15px 30px 15px;
+  }
+
+  .picture-description {
+    padding: 0 30px 15px 30px;
+  }
+
+}
+
+@media (min-width:1201px) {
+  .description-block {
+    width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gallery-vertical-block .picture-description {
+    font-size: 15pt;
+  }
+}

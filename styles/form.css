@@ -1,0 +1,12 @@
+h1 {
+  margin: 15px 0;
+  text-align: center;
+}
+
+form {
+  margin: 0 30px;
+}
+
+input[type=time]::-webkit-calendar-picker-indicator {
+  display: none;
+}
