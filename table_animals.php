@@ -9,11 +9,8 @@
   <link rel="stylesheet" href="./styles/animals.css">
   <title>Таблица Животные</title>
 </head>
-<?php if (date('H:i') >= '22:00' && date('H:i') <= '10:00') {
-  $themes = 'night-mode';
-} else {
-  $themes = 'day-mode';
-}
+<?php
+include_once './include/time_theme.php';
 ?>
 
 <body class="<?php echo $themes ?>">
