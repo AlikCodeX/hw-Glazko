@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/styles.css">
-  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/main.css">
   <title>О себе</title>
 </head>
 <?php
-include_once './include/time_theme.php';
+include_once 'include/time_theme.php';
 ?>
 
 <body class="<?php echo $themes ?>">
@@ -31,10 +31,6 @@ include_once './include/time_theme.php';
     </nav>
   </header>
   <main>
-    <?php
-    //echo date('H:i:s'); Проверка текущего времени
-    // var_dump(gmdate("H:i:s", $sec)); //gmdate форматирование по Гринвичу для отладки 
-    ?>
     <div class="description-block">
       <div class="block-photo">
         <img src="./img/my_photo.jpg" alt="Глазко Александр фото">
@@ -45,15 +41,22 @@ include_once './include/time_theme.php';
         </div>
         <div class="main-text-block">
           <div class="text-block">
-            Работаю 3 года системным администратором, отучился и имею дипломы на среднее специальное "Техническое
-            обслуживание средств вычислительной техники и компьютерных сетей" и высшее "Программная инженерия"
-            образование. Интересуюсь различными технологиями, в свободное время люблю кататься на скейте и рисовать.
+            <?php include_once 'include/first_word.php'; ?>
           </div>
           <div class="text-block">
-            Все супер! Атмосфера стимулирует к обучению, радует, что есть практика прямо во время обучения, это
-            позволяет лучше закрепить и разобрать тему урока.
+            <?php include_once 'include/about_study.php'; ?>
           </div>
         </div>
+        <?php include_once 'include/num_glasn.php'; ?>
+        Количество гласных на странице:
+        <?php echo " $numGlasn <br>"; ?>
+        Количество слов на странице:
+        <?php
+        echo " $numWord";
+        include_once 'include/date.php'; ?>
+        <br>День рождения: <?php echo $dateBirth; ?>
+        <br>Сегодня: <?php echo $today; ?>
+        <br>Количество дней между датами: <?php echo $diffPrint; ?>
       </div>
     </div>
     <h2>Достопримечательности Красноярска</h2>
