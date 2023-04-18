@@ -10,11 +10,11 @@
   <title>О себе</title>
 </head>
 <?php
-include_once 'include/time_theme.php';
+include_once 'include/functions.php';
 ?>
 
-<body class="<?php echo $themes ?>">
-  <header class="<?php echo $themes ?>">
+<body class="<?php timeTheme(); ?>">
+  <header class="<?php timeTheme(); ?>">
     <nav>
       <a href="index.php">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
@@ -33,7 +33,7 @@ include_once 'include/time_theme.php';
   <main>
     <div class="description-block">
       <div class="block-photo">
-        <img src="./img/my_photo.jpg" alt="Глазко Александр фото">
+        <img src="img/my_photo.jpg" alt="Глазко Александр фото">
       </div>
       <div class="block-info">
         <div class="block-name">
@@ -41,22 +41,21 @@ include_once 'include/time_theme.php';
         </div>
         <div class="main-text-block">
           <div class="text-block">
-            <?php include_once 'include/first_word.php'; ?>
+            <?php
+            $strAboutMe = 'Работаю 3 года системным администратором, отучился и имею дипломы на среднее специальное "Техническое обслуживание средств вычислительной техники и компьютерных сетей" и высшее "Программная инженерия" образование. Интересуюсь различными технологиями, в свободное время люблю кататься на скейте и рисовать.';
+            $strAboutStudy = 'Все супер! Атмосфера стимулирует к обучению, радует, что есть практика прямо во время обучения, это позволяет лучше закрепить и разобрать тему урока.';
+            firstWord($strAboutMe);
+            ?>
           </div>
           <div class="text-block">
-            <?php include_once 'include/about_study.php'; ?>
+            <?php
+            coloringWords($strAboutStudy); ?>
           </div>
         </div>
-        <?php include_once 'include/num_glasn.php'; ?>
-        Количество гласных на странице:
-        <?php echo " $numGlasn <br>"; ?>
-        Количество слов на странице:
         <?php
-        echo " $numWord";
-        include_once 'include/date.php'; ?>
-        <br>День рождения: <?php echo $dateBirth; ?>
-        <br>Сегодня: <?php echo $today; ?>
-        <br>Количество дней между датами: <?php echo $diffPrint; ?>
+        numGlasn($strAboutMe, $strAboutStudy);
+        numWord($strAboutMe, $strAboutStudy);
+        countDays('10.11.1994', date('d.m.Y')); ?>
       </div>
     </div>
     <h2>Достопримечательности Красноярска</h2>
