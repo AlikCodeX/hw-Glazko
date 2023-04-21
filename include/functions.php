@@ -91,3 +91,22 @@ function countDays($dateBirth, $today)
         Сегодня: $today<br>
         Количество дней между датами: $diffPrint<br>";
 }
+
+//Проверка зарегестрированных пользователей
+function checkAuth($users, &$userExist)
+{
+  $userExist = 'no';
+  if ($_POST) {
+    foreach ($users as $user) {
+      if ($user['login'] == $_POST['login'] && $user['hash'] == password_verify($_POST['password'], $user['hash'])) {
+        $userExist = 'yes';
+        break;
+      }
+    }
+  }
+
+  /* if ($userExist)
+    echo 'good';
+  else
+    echo 'bad'; */
+}
