@@ -35,7 +35,7 @@ include_once 'include/functions.php';
           <input type="password" name="password">
         </div>
         <button class="button-auth" type="submit">Вход</button>
-        <a class="link-registration" href="reg.php">Зарегистрироваться</a>
+        <a class="link-registration" href="reg.php">Регистрация</a>
       </form>
     <?php
     }
@@ -57,6 +57,9 @@ include_once 'include/functions.php';
           break;
         case 'empty':
           echo 'Не указан логин!';
+          ?>
+          <br><br><img style="width: 400px" src="img/oops.gif" alt="">
+          <?php
           break;
       }
     }

@@ -30,6 +30,11 @@ include_once 'include/functions.php';
         <label class="block-field_label" for="new_password">Пароль:</label>
         <input type="password" name="new_password">
       </div>
+      <div class="block-field password">
+        <label class="block-field_label" for="repeat_new_password">Повтор пароля:</label>
+        <input type="password" name="repeat_new_password">
+      </div>
+      <button class="button-auth" type="submit">Зарегистрироваться</button>
     </form>
   </main>
 </body>
