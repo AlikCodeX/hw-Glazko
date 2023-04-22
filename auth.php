@@ -19,18 +19,16 @@ include_once 'include/functions.php';
     <?php
     //Подключение файла с массивом пользователей $users
     require('include/users_DB.php');
-    /* $userExist = 0; */
-    /* if (!isset($_POST)) { */
+    if (!empty($_POST)) {
       checkAuth($users, $userExist);
-    /* } */
-    ?>
-    <?php /* if ($userExist == 'no') { */
+    }
+    if ((!isset($userExist)) || $userExist != 'yes') {
     ?>
       <form action="" method="post" class="form-auth">
         <h1>Авторизация</h1>
         <div class="block-field login">
           <label class="block-field_label" for="login">Логин:</label>
-          <input type="text" name="login" value="<?php /* echo isset($_POST['login']) ?? '' */ ?>">
+          <input type="text" name="login" value="<?php echo $_POST['login'] ?? '' ?>">
         </div>
         <div class="block-field password">
           <label class="block-field_label" for="password">Пароль:</label>
@@ -40,22 +38,30 @@ include_once 'include/functions.php';
         <a class="link-registration" href="reg.php">Зарегистрироваться</a>
       </form>
     <?php
-    /* } */
-
-    print_r($_REQUEST);
-
-    if ($userExist == 'yes') {
-      echo 'Вы успешно "авторизованы"';
-    ?>
-      <br><br><img style="width: 400px" src="img/nice.gif" alt="">
-    <?php
-    } elseif ($userExist == 'no') {
-      echo 'Неверный логин/пароль =(';
-    ?>
-      <br><br><img style="width: 400px" src="img/no.gif" alt="">
-    <?php
     }
     ?>
+
+    <?php
+    if (isset($userExist)) {
+      switch ($userExist) {
+        case 'yes':
+          echo 'Вы успешно "авторизованы!"'; ?>
+          <br><br><img style="width: 400px" src="img/nice.gif" alt="">
+        <?php
+          break;
+        case 'no':
+          echo 'Неверный логин/пароль!';
+        ?>
+          <br><br><img style="width: 400px" src="img/no.gif" alt="">
+    <?php
+          break;
+        case 'empty':
+          echo 'Не указан логин!';
+          break;
+      }
+    }
+    ?>
+
   </main>
 </body>
 

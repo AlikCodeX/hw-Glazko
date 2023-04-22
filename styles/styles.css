@@ -14,10 +14,6 @@ body {
   text-shadow: #424242 1px 1px 5px;
 }
 
-header {
-  display: flex;
-}
-
 nav {
   padding: 30px 50px 30px 50px;
   display: flex;
@@ -39,8 +35,7 @@ nav {
   align-items: center;
   padding-right: 15px;
   padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  width: 100%;
 }
 
 .menu>li {
@@ -118,9 +113,8 @@ nav {
 
 
 @media (min-width:768px) {
-  .menu>li:nth-last-child(-n+1) {
-    position: absolute;
-    right: 0;
+  .menu>li:last-child {
+    margin-left: auto;
   }
 }
 
