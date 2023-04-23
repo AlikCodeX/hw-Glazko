@@ -7,7 +7,8 @@ main {
   margin: 0 auto;
 }
 
-.form-auth, .form-registr {
+.form-auth,
+.form-registr {
   margin: 30px 0;
   width: 300px;
 }

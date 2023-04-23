@@ -53,13 +53,13 @@ include_once 'include/functions.php';
           echo 'Неверный логин/пароль!';
         ?>
           <br><br><img style="width: 400px" src="img/no.gif" alt="">
-    <?php
+        <?php
           break;
         case 'empty':
           echo 'Не указан логин!';
-          ?>
+        ?>
           <br><br><img style="width: 400px" src="img/oops.gif" alt="">
-          <?php
+    <?php
           break;
       }
     }
