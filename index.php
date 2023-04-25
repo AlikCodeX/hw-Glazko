@@ -1,3 +1,9 @@
+<?php
+session_start();
+session_destroy();
+include_once 'include/functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -9,11 +15,8 @@
   <link rel="stylesheet" href="styles/main.css">
   <title>О себе</title>
 </head>
-<?php
-include_once 'include/functions.php';
-?>
 
-<body class="<?php timeTheme(); ?>">
+<body style="background-color:<?php timeTheme()?>">
   <?php include_once 'include/header.php'; ?>
   <main>
     <div class="description-block">

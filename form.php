@@ -1,3 +1,8 @@
+<?php
+include_once './include/functions.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -9,15 +14,12 @@
   <link rel="stylesheet" href="./styles/form.css">
   <title>Форма пользователя</title>
 </head>
-<?php
-include_once './include/functions.php';
-?>
 
-<body class="<?php timeTheme(); ?>">
+<body style="background-color:<?php timeTheme()?>">
   <?php include_once 'include/header.php'; ?>
   <main>
     <h1>Анкета опросник</h1>
-    <form name="form-question">
+    <form class="form-answer" name="form-question">
       <label for="user">Имя пользователя:</label>
       <input type="text" name="user-name" id="user">
       <br>

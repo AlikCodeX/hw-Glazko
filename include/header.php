@@ -1,4 +1,7 @@
-<header class="<?php timeTheme(); ?>">
+<?php
+
+?>
+<header style="background-color:<?php timeTheme()?>">
   <nav>
     <a href="index.php">
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
@@ -8,9 +11,27 @@
       </svg>
     </a>
     <ul class="menu">
+      <li>
+        <form action="">
+          <select name="theme" onchange="this.form.submit()">
+            <option disabled selected value>Выбор темы</option>
+            <option value="<?php echo $colorsTheme[0] ?>" style="background-color:<?php echo $colorsTheme[0] ?>;color: #fff;">
+              Тема 1
+            </option>
+            <option value="<?php echo $colorsTheme[1] ?>" style="background-color:<?php echo $colorsTheme[1] ?>;color: #fff;">
+              Тема 2
+            </option>
+            <option value="<?php echo $colorsTheme[2] ?>" style="background-color:<?php echo $colorsTheme[2] ?>;color: #fff;">
+              Тема 3
+            </option>
+          </select>
+        </form>
+      </li>
       <li><a href="table_animals.php" class="link-menu">Таблица Животные</a></li>
       <li><a href="form.php" class="link-menu">Форма</a></li>
       <li><a href="flex.php" class="link-menu">FLEXBOX/GRID</a></li>
+      <li><a href="fact.php" class="link-menu">Факт</a></li>
+      <li><a href="bitrix.php" class="link-menu">Битрикс</a></li>
       <li><a href="auth.php" class="link-menu">Авторизация</a></li>
     </ul>
   </nav>

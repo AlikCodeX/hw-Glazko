@@ -1,3 +1,8 @@
+<?php
+session_start();
+include_once 'include/functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -9,11 +14,8 @@
   <link rel="stylesheet" href="styles/auth.css">
   <title>Авторизация</title>
 </head>
-<?php
-include_once 'include/functions.php';
-?>
 
-<body class="<?php timeTheme(); ?>">
+<body style="background-color:<?php timeTheme()?>">
   <?php include_once 'include/header.php'; ?>
   <main>
     <?php
@@ -45,8 +47,10 @@ include_once 'include/functions.php';
     if (isset($userExist)) {
       switch ($userExist) {
         case 'yes':
-          echo 'Вы успешно "авторизованы!"'; ?>
+          echo 'Вы успешно "авторизованы!"' . "<br>";
+          echo "Последняя посещенная страница: " . $_SESSION['lastPage']; ?>
           <br><br><img style="width: 400px" src="img/nice.gif" alt="">
+          <?php /* echo "Последняя посещенная страница: " . $_SESSION['lastPage']; */ ?>
         <?php
           break;
         case 'no':

@@ -1,3 +1,7 @@
+<?php
+include_once 'include/functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -9,11 +13,8 @@
   <link rel="stylesheet" href="styles/auth.css">
   <title>Регистрация</title>
 </head>
-<?php
-include_once 'include/functions.php';
-?>
 
-<body class="<?php timeTheme(); ?>">
+<body style="background-color:<?php timeTheme()?>">
   <?php include_once 'include/header.php'; ?>
   <main>
     <form action="" method="post" class="form-registr">

@@ -1,3 +1,7 @@
+<?php
+include_once './include/functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -9,11 +13,8 @@
   <link rel="stylesheet" href="./styles/flex-grid.css">
   <title>FLEXBOX/GRID</title>
 </head>
-<?php
-include_once './include/functions.php';
-?>
 
-<body class="<?php timeTheme(); ?>">
+<body style="background-color:<?php timeTheme()?>">
   <?php include_once 'include/header.php'; ?>
   <main>
     <h1>FLEXBOX/GRID</h1>

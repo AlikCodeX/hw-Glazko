@@ -1,4 +1,12 @@
 <?php
+$colorsTheme[0] = '#355c9d';
+$colorsTheme[1] = '#666549';
+$colorsTheme[2] = '#5e374d';
+if (isset($_GET['theme'])) {
+  setcookie('colorTheme', $_GET['theme']);
+  $_COOKIE['colorTheme'] = $_GET['theme'];
+}
+
 // Изменение фона в зависимости от времени
 function timeTheme()
 {
@@ -7,15 +15,19 @@ function timeTheme()
   //По умолчанию в OSP время на сервере Московское
   //Для отладки было решено выставлять сторонюю временную зону, например:
   //date_default_timezone_set('Asia/Krasnoyarsk');
-  $timeData = date_parse(date('H:i:s')); //формируем ассоциативный массив с помощью функции date_parse внося в него только часы, минуты и секунды
-  $secInHour = $timeData['hour'] * 3600; // вычисляем количество секунд из текущего часа
-  $secInMinute = $timeData['minute'] * 60; // вычисляем количество секунд из текущих минут
-  $sec = $timeData['second']; // инициализируем переменную с текущими секундами
-  $sec = $secInHour + $secInMinute + $sec; // сумма текущих секунд
-  if ($sec >= 36000 && $sec <= 79200) { // 36000 секунд это 10 часов ровно, а 79200 это 22 часа
-    echo 'day-mode'; // класс дневной темы
+  if (!isset($_COOKIE['colorTheme'])) {
+    $timeData = date_parse(date('H:i:s')); //формируем ассоциативный массив с помощью функции date_parse внося в него только часы, минуты и секунды
+    $secInHour = $timeData['hour'] * 3600; // вычисляем количество секунд из текущего часа
+    $secInMinute = $timeData['minute'] * 60; // вычисляем количество секунд из текущих минут
+    $sec = $timeData['second']; // инициализируем переменную с текущими секундами
+    $sec = $secInHour + $secInMinute + $sec; // сумма текущих секунд
+    if ($sec >= 36000 && $sec <= 79200) { // 36000 секунд это 10 часов ровно, а 79200 это 22 часа
+      echo '#828b9a'; // класс дневной темы
+    } else {
+      echo '#46494e'; // класс ночной темы
+    }
   } else {
-    echo 'night-mode'; // класс ночной темы
+    echo $_COOKIE['colorTheme'];
   }
 }
 
