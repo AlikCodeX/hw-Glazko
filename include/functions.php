@@ -6,6 +6,11 @@ if (isset($_GET['theme'])) {
   setcookie('colorTheme', $_GET['theme']);
   $_COOKIE['colorTheme'] = $_GET['theme'];
 }
+if ($_GET) {
+  if ($_GET['theme'] == 'timeTheme') {
+    setcookie('colorTheme', $_GET['theme']);
+  }
+}
 
 // Изменение фона в зависимости от времени
 function timeTheme()
@@ -15,7 +20,7 @@ function timeTheme()
   //По умолчанию в OSP время на сервере Московское
   //Для отладки было решено выставлять сторонюю временную зону, например:
   //date_default_timezone_set('Asia/Krasnoyarsk');
-  if (!isset($_COOKIE['colorTheme'])) {
+  if (!isset($_COOKIE['colorTheme']) || $_COOKIE['colorTheme'] == 'timeTheme') {
     $timeData = date_parse(date('H:i:s')); //формируем ассоциативный массив с помощью функции date_parse внося в него только часы, минуты и секунды
     $secInHour = $timeData['hour'] * 3600; // вычисляем количество секунд из текущего часа
     $secInMinute = $timeData['minute'] * 60; // вычисляем количество секунд из текущих минут

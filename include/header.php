@@ -1,7 +1,4 @@
-<?php
-
-?>
-<header style="background-color:<?php timeTheme()?>">
+<header style="background-color:<?php timeTheme(); ?>">
   <nav>
     <a href="index.php">
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
@@ -13,15 +10,17 @@
     <ul class="menu">
       <li>
         <form action="">
-          <select name="theme" onchange="this.form.submit()">
-            <option disabled selected value>Выбор темы</option>
-            <option value="<?php echo $colorsTheme[0] ?>" style="background-color:<?php echo $colorsTheme[0] ?>;color: #fff;">
+          <select name="theme" onchange="this.form.submit()" id="selectTheme">
+            <option value="<?php echo 'timeTheme' ?>" <?php echo $_COOKIE['colorTheme'] ? "" : "selected" ?>>
+              Временная тема
+            </option>
+            <option value="<?php echo $colorsTheme[0] ?>" <?php echo $_COOKIE['colorTheme'] == $colorsTheme[0] ? "selected" : "" ?> style="background-color:<?php echo $colorsTheme[0] ?>;color: #fff;">
               Тема 1
             </option>
-            <option value="<?php echo $colorsTheme[1] ?>" style="background-color:<?php echo $colorsTheme[1] ?>;color: #fff;">
+            <option value="<?php echo $colorsTheme[1] ?>" <?php echo $_COOKIE['colorTheme'] == $colorsTheme[1] ? "selected" : "" ?> style="background-color:<?php echo $colorsTheme[1] ?>;color: #fff;">
               Тема 2
             </option>
-            <option value="<?php echo $colorsTheme[2] ?>" style="background-color:<?php echo $colorsTheme[2] ?>;color: #fff;">
+            <option value="<?php echo $colorsTheme[2] ?>" <?php echo $_COOKIE['colorTheme'] == $colorsTheme[2] ? "selected" : "" ?> style="background-color:<?php echo $colorsTheme[2] ?>;color: #fff;">
               Тема 3
             </option>
           </select>

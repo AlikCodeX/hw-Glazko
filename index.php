@@ -16,7 +16,7 @@ include_once 'include/functions.php';
   <title>О себе</title>
 </head>
 
-<body style="background-color:<?php timeTheme()?>">
+<body style="background-color:<?php timeTheme(); ?>">
   <?php include_once 'include/header.php'; ?>
   <main>
     <div class="description-block">
