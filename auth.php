@@ -48,9 +48,9 @@ include_once 'include/functions.php';
       switch ($userExist) {
         case 'yes':
           echo 'Вы успешно "авторизованы!"' . "<br>";
+          if (isset($_SESSION['lastPage']))
           echo "Последняя посещенная страница: " . $_SESSION['lastPage']; ?>
           <br><br><img style="width: 400px" src="img/nice.gif" alt="">
-          <?php /* echo "Последняя посещенная страница: " . $_SESSION['lastPage']; */ ?>
         <?php
           break;
         case 'no':
