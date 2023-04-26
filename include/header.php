@@ -11,16 +11,16 @@
       <li>
         <form action="">
           <select name="theme" onchange="this.form.submit()" id="selectTheme">
-            <option value="<?php echo 'timeTheme' ?>" <?php echo $_COOKIE['colorTheme'] ? "" : "selected" ?>>
+            <option value="<?php echo 'timeTheme' ?>" <?php if (isset($_COOKIE['colorTheme'])) { echo $_COOKIE['colorTheme'] ? "" : "selected"; } ?>>
               Временная тема
             </option>
-            <option value="<?php echo $colorsTheme[0] ?>" <?php echo $_COOKIE['colorTheme'] == $colorsTheme[0] ? "selected" : "" ?> style="background-color:<?php echo $colorsTheme[0] ?>;color: #fff;">
+            <option value="<?php echo $colorsTheme[0] ?>" <?php if (isset($_COOKIE['colorTheme'])) { echo $_COOKIE['colorTheme'] == $colorsTheme[0] ? "selected" : ""; } ?> style="background-color:<?php echo $colorsTheme[0] ?>;color: #fff;">
               Тема 1
             </option>
-            <option value="<?php echo $colorsTheme[1] ?>" <?php echo $_COOKIE['colorTheme'] == $colorsTheme[1] ? "selected" : "" ?> style="background-color:<?php echo $colorsTheme[1] ?>;color: #fff;">
+            <option value="<?php echo $colorsTheme[1] ?>" <?php if (isset($_COOKIE['colorTheme'])) { echo $_COOKIE['colorTheme'] == $colorsTheme[1] ? "selected" : ""; } ?> style="background-color:<?php echo $colorsTheme[1] ?>;color: #fff;">
               Тема 2
             </option>
-            <option value="<?php echo $colorsTheme[2] ?>" <?php echo $_COOKIE['colorTheme'] == $colorsTheme[2] ? "selected" : "" ?> style="background-color:<?php echo $colorsTheme[2] ?>;color: #fff;">
+            <option value="<?php echo $colorsTheme[2] ?>" <?php if (isset($_COOKIE['colorTheme'])) { echo $_COOKIE['colorTheme'] == $colorsTheme[2] ? "selected" : ""; } ?> style="background-color:<?php echo $colorsTheme[2] ?>;color: #fff;">
               Тема 3
             </option>
           </select>
