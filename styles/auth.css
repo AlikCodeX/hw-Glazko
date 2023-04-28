@@ -10,7 +10,7 @@ main {
 .form-auth,
 .form-registr {
   margin: 30px 0;
-  width: 300px;
+  width: 400px;
 }
 
 .block-field {
@@ -27,6 +27,11 @@ main {
 .link-registration {
   color: #fff;
   display: block;
+}
+
+.block-field_label {
+  display: block;
+  width: 50%;
 }
 
 @media (min-width: 576px) {

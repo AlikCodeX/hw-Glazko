@@ -14,10 +14,61 @@ include_once 'include/functions.php';
   <title>Регистрация</title>
 </head>
 
-<body style="background-color:<?php timeTheme()?>">
-  <?php include_once 'include/header.php'; ?>
+<body style="background-color:<?php timeTheme() ?>">
+  <?php include_once 'include/header.php';
+    /* unset($_POST); */
+  /* print_r($_POST); */
+  /* if (!empty($_POST)) {
+    if (!empty($_POST['new_login'])) {
+      if ($_FILES) {
+        $info = new SplFileInfo($_FILES['avatar']['name']);
+        $type = $info->getExtension();
+        switch ($type) {
+          case 'png':
+          case 'jpg':
+          case 'jpeg':
+          case 'gif':
+            move_uploaded_file($_FILES['avatar']['tmp_name'], 'foto/' . $_POST['new_login'] . '_avatar.' . "$type");
+            break;
+          case '':
+            break;
+          default:
+            echo "error! Неверный формат, только png, jpg, jpeg, gif";
+            break;
+        }
+      }
+    } else {
+      echo 'Нет логина!';
+    }
+  } */
+  ?>
   <main>
-    <form action="" method="post" class="form-registr">
+    <?php
+    if (!empty($_POST)) {
+      if (!empty($_POST['new_login'])) {
+        if ($_FILES) {
+          $info = new SplFileInfo($_FILES['avatar']['name']);
+          $type = $info->getExtension();
+          switch ($type) {
+            case 'png':
+            case 'jpg':
+            case 'jpeg':
+            case 'gif':
+              move_uploaded_file($_FILES['avatar']['tmp_name'], 'foto/' . $_POST['new_login'] . '_avatar.' . "$type");
+              break;
+            case '':
+              break;
+            default:
+              echo "error! Неверный формат, только png, jpg, jpeg, gif";
+              break;
+          }
+        }
+      } else {
+        echo 'Нет логина!';
+      }
+    }
+    ?>
+    <form action="" method="post" class="form-registr" enctype="multipart/form-data">
       <h1>Регистрация</h1>
       <div class="block-field name">
         <label class="block-field_label" for="user_name">Имя:</label>
@@ -34,6 +85,10 @@ include_once 'include/functions.php';
       <div class="block-field password">
         <label class="block-field_label" for="repeat_new_password">Повтор пароля:</label>
         <input type="password" name="repeat_new_password">
+      </div>
+      <div class="block-field password">
+        <label class="block-field_label" for="avatar">Аватар:</label>
+        <input type="file" name="avatar">
       </div>
       <button class="button-auth" type="submit">Зарегистрироваться</button>
     </form>
