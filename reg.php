@@ -15,33 +15,7 @@ include_once 'include/functions.php';
 </head>
 
 <body style="background-color:<?php timeTheme() ?>">
-  <?php include_once 'include/header.php';
-    /* unset($_POST); */
-  /* print_r($_POST); */
-  /* if (!empty($_POST)) {
-    if (!empty($_POST['new_login'])) {
-      if ($_FILES) {
-        $info = new SplFileInfo($_FILES['avatar']['name']);
-        $type = $info->getExtension();
-        switch ($type) {
-          case 'png':
-          case 'jpg':
-          case 'jpeg':
-          case 'gif':
-            move_uploaded_file($_FILES['avatar']['tmp_name'], 'foto/' . $_POST['new_login'] . '_avatar.' . "$type");
-            break;
-          case '':
-            break;
-          default:
-            echo "error! Неверный формат, только png, jpg, jpeg, gif";
-            break;
-        }
-      }
-    } else {
-      echo 'Нет логина!';
-    }
-  } */
-  ?>
+  <?php include_once 'include/header.php'; ?>
   <main>
     <?php
     if (!empty($_POST)) {
@@ -59,7 +33,7 @@ include_once 'include/functions.php';
             case '':
               break;
             default:
-              echo "error! Неверный формат, только png, jpg, jpeg, gif";
+              echo "Неверный формат файла, только png, jpg, jpeg, gif";
               break;
           }
         }
