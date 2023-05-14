@@ -1,7 +1,3 @@
-/* h1 {
-  text-align: center;
-} */
-
 main {
   padding: 0 15px;
   margin: 0 auto;
@@ -32,6 +28,10 @@ main {
 .block-field_label {
   display: block;
   width: 50%;
+}
+
+.link-main {
+  color: #fff;
 }
 
 @media (min-width: 576px) {

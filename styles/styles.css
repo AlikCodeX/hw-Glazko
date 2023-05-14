@@ -20,14 +20,6 @@ nav {
   align-items: center;
 }
 
-/* .night-mode {
-  background: #46494e;
-}
-
-.day-mode {
-  background: #828b9a;
-} */
-
 .menu {
   list-style: none;
   display: flex;
@@ -115,6 +107,7 @@ nav {
 @media (min-width:768px) {
   .menu>li:last-child {
     margin-left: auto;
+    display: flex;
   }
 }
 

@@ -9,29 +9,64 @@
     </a>
     <ul class="menu">
       <li>
-        <form action="">
+        <form>
           <select name="theme" onchange="this.form.submit()" id="selectTheme">
-            <option value="<?php echo 'timeTheme' ?>" <?php if (isset($_COOKIE['colorTheme'])) { echo $_COOKIE['colorTheme'] ? "" : "selected"; } ?>>
+            <option value="<?php echo 'timeTheme' ?>" 
+              <?php 
+              if (isset($_COOKIE['colorTheme'])) { 
+                echo $_COOKIE['colorTheme'] ? "" : "selected"; 
+              } 
+              ?>
+            >
               Временная тема
             </option>
-            <option value="<?php echo $colorsTheme[0] ?>" <?php if (isset($_COOKIE['colorTheme'])) { echo $_COOKIE['colorTheme'] == $colorsTheme[0] ? "selected" : ""; } ?> style="background-color:<?php echo $colorsTheme[0] ?>;color: #fff;">
+            <option value="<?php echo $colorsTheme[0] ?>" 
+              <?php 
+              if (isset($_COOKIE['colorTheme'])) { 
+                echo $_COOKIE['colorTheme'] == $colorsTheme[0] ? "selected" : ""; 
+              } 
+              ?>
+              style="background-color:<?php echo $colorsTheme[0] ?>;color: #fff;"
+            >
               Тема 1
             </option>
-            <option value="<?php echo $colorsTheme[1] ?>" <?php if (isset($_COOKIE['colorTheme'])) { echo $_COOKIE['colorTheme'] == $colorsTheme[1] ? "selected" : ""; } ?> style="background-color:<?php echo $colorsTheme[1] ?>;color: #fff;">
+            <option value="<?php echo $colorsTheme[1] ?>"
+              <?php 
+              if (isset($_COOKIE['colorTheme'])) {
+                echo $_COOKIE['colorTheme'] == $colorsTheme[1] ? "selected" : "";
+              }
+              ?>
+              style="background-color:<?php echo $colorsTheme[1] ?>;color: #fff;"
+            >
               Тема 2
             </option>
-            <option value="<?php echo $colorsTheme[2] ?>" <?php if (isset($_COOKIE['colorTheme'])) { echo $_COOKIE['colorTheme'] == $colorsTheme[2] ? "selected" : ""; } ?> style="background-color:<?php echo $colorsTheme[2] ?>;color: #fff;">
+            <option value="<?php echo $colorsTheme[2] ?>"
+              <?php
+              if (isset($_COOKIE['colorTheme'])) {
+                echo $_COOKIE['colorTheme'] == $colorsTheme[2] ? "selected" : "";
+              }
+              ?>
+              style="background-color:<?php echo $colorsTheme[2] ?>;color: #fff;"
+            >
               Тема 3
             </option>
           </select>
         </form>
       </li>
-      <li><a href="table_animals.php" class="link-menu">Таблица Животные</a></li>
-      <li><a href="form.php" class="link-menu">Форма</a></li>
-      <li><a href="flex.php" class="link-menu">FLEXBOX/GRID</a></li>
-      <li><a href="fact.php" class="link-menu">Факт</a></li>
-      <li><a href="bitrix.php" class="link-menu">Битрикс</a></li>
-      <li><a href="auth.php" class="link-menu">Авторизация</a></li>
+      <?php
+      if (empty($_SESSION['authUser'])) {
+      ?>
+        <li><a href="auth.php" class="link-menu">Авторизация</a></li>
+      <?php
+      } else {
+      ?>
+        <li>
+          <a href="" class="link-menu">Привет, <?php echo $_SESSION['authUser'] . ' / '?></a>
+          <a href="?logout=yes" class="link-menu">Выход</a>
+        </li>
+      <?php
+      }
+      ?>
     </ul>
   </nav>
 </header>
