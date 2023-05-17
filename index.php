@@ -1,5 +1,4 @@
 <?php
-include_once 'include/dbconnect.php';
 include_once 'include/functions.php';
 ?>
 

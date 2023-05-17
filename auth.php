@@ -1,5 +1,4 @@
 <?php
-include_once 'include/dbconnect.php';
 include_once 'include/functions.php';
 ?>
 
@@ -19,8 +18,9 @@ include_once 'include/functions.php';
   <?php include_once 'include/header.php'; ?>
   <main>
     <?php
-    if (isset($_SESSION['authUser']) || isset($_POST['login'])) {
-      checkAuth($db_con, $userExist);
+    if (isset($_POST['login'])) {
+      $user = new User;
+      $user->authorization($_POST['login'], $_POST['password'], $db_con, $userExist);
     }
     if (!isset($_SESSION['authUser'])) {
     ?>
@@ -42,27 +42,24 @@ include_once 'include/functions.php';
     ?>
 
     <?php
+    if (isset($_SESSION['authUser'])) {
+      echo 'Вы успешно авторизованы!';
+    ?>
+      <br><br><img style="width: 400px" src="img/nice.gif" alt="">
+      <br><br><a href="/" class="link-main">Вернуться на главную страницу</a>
+    <?
+    }
     if (isset($userExist)) {
-      switch ($userExist) {
-        case 'yes':
-          echo 'Вы успешно авторизованы!';
-          ?>
-          <br><br><img style="width: 400px" src="img/nice.gif" alt="">
-          <br><br><a href="/" class="link-main">Вернуться на главную страницу</a>
-          <?php
-          break;
-        case 'no':
+      if ($userExist == 'no') {
           echo 'Неверный логин/пароль!';
           ?>
           <br><br><img style="width: 400px" src="img/no.gif" alt="">
-          <?php
-          break;
-        case 'empty':
-          echo 'Не указан логин!';
-          ?>
-          <br><br><img style="width: 400px" src="img/oops.gif" alt="">
-          <?php
-          break;
+        <?php
+      } elseif ($userExist == 'empty') {
+        echo 'Не указан логин!';
+        ?>
+        <br><br><img style="width: 400px" src="img/oops.gif" alt="">
+      <?php
       }
     }
     ?>

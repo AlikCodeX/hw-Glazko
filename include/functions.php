@@ -1,5 +1,21 @@
 <?php
 session_start();
+require_once 'DataBase.php';
+require_once 'User.php';
+
+//подключение к БД
+$connectDB = new DataBase();
+$db_con = $connectDB->connectDB();
+
+// Выход пользователя из статуса авторизации
+if (isset($_GET['logout'])) {
+  $user = new User;
+  $user->logout();
+} else {
+  // Хранение текущей страницы для обновления страницы при удалении сессии
+  setcookie('currentPage', $_SERVER['REQUEST_URI']);
+  $_COOKIE['currentPage'] = $_SERVER['REQUEST_URI'];
+}
 
 //Тема фона
 $colorsTheme[0] = '#355c9d';
@@ -10,69 +26,11 @@ if (isset($_GET['theme'])) {
   $_COOKIE['colorTheme'] = $_GET['theme'];
 }
 
-// Хранение текущей страницы для обновления страницы при удалении сессии
-if (!isset($_GET['logout'])) {
-  setcookie('currentPage', $_SERVER['REQUEST_URI']);
-  $_COOKIE['currentPage'] = $_SERVER['REQUEST_URI'];
-}
-
-// Выход пользователя из статуса авторизации
-if (isset($_GET['logout'])) {
-  if ($_GET['logout'] == 'yes') {
-    session_destroy();
-    $_GET['logout'] = '';
-    header('Location: ' . $_COOKIE['currentPage']);
-    die();
-  }
-}
-
 //Редирект страницы
 function redirect($url)
 {
   header('Location: ' . $url);
   die();
-}
-
-//Регистрация
-function checkReg($db_con)
-{
-  if ($_POST) {
-    if ($_POST['new_login']) {
-      $lenthLogin = mb_strlen($_POST['new_login']);
-
-      if ($lenthLogin <= 2 || $lenthLogin >= 30)
-        $error[] = 'Длина логина должна быть от 3 до 30 символов!';
-    } else {
-      $error[] = 'Поле логин не заполнено!';
-    }
-
-    if (!$_POST['new_password'])
-      $error[] = 'Поле пароль не заполнено!';
-
-    if ($_POST['repeat_new_password']) {
-      if ($_POST['new_password'] <> $_POST['repeat_new_password'])
-        $error[] = 'Пароль и подтверждение пароля не совпадают!';
-    } else
-      $error[] = 'Поле повтора пароля не заполнено!';
-
-    $duplQery = mysqli_query($db_con, "SELECT * FROM `users` WHERE login = '{$_POST['new_login']}'");
-
-    if (mysqli_num_rows($duplQery) > 0) {
-      $error[] = 'Пользователь с таким логином уже существует!';
-    }
-
-    if (empty($error)) {
-      $hash = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
-      mysqli_query($db_con, "INSERT INTO users (id, login, password) VALUES (NULL, '{$_POST['new_login']}', '{$hash}')");
-      $_SESSION['authUser'] = $_POST['new_login'];
-      $url = '/auth.php';
-      redirect($url);
-    } else {
-      foreach ($error as $value) {
-        echo '<br>' . $value;
-      }
-    }
-  }
 }
 
 // Изменение фона в зависимости от времени
@@ -170,32 +128,4 @@ function countDays($dateBirth, $today)
   echo "День рождения: $dateBirth<br>
         Сегодня: $today<br>
         Количество дней между датами: $diffPrint<br>";
-}
-
-//Проверка зарегистрированных пользователей
-function checkAuth($db_con, &$userExist)
-{
-  if (isset($_SESSION['authUser'])) {
-    $userExist = 'yes';
-  } else {
-    if ($_POST['login']) {
-      $selectUser = mysqli_query($db_con, "SELECT * FROM `users` WHERE login = '{$_POST['login']}'");
-      $userArray = mysqli_fetch_all($selectUser, MYSQLI_ASSOC);
-      if (!empty($userArray)) {
-        foreach ($userArray as $value) {
-          if ($value['password'] == password_verify($_POST['password'], $value['password'])) {
-            $userExist = 'yes';
-            $_SESSION['authUser'] = $_POST['login'];
-            redirect($_COOKIE['currentPage']);
-          } else {
-            $userExist = 'no';
-          }
-        }
-      } else {
-        $userExist = 'no';
-      }
-    } else {
-      $userExist = 'empty';
-    }
-  }
 }

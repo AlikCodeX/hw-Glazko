@@ -1,5 +1,4 @@
 <?php
-include_once 'include/dbconnect.php';
 include_once 'include/functions.php';
 ?>
 
@@ -19,41 +18,17 @@ include_once 'include/functions.php';
   <?php include_once 'include/header.php'; ?>
   <main>
     <?php
-    /* if (!empty($_POST)) {
-      if (!empty($_POST['new_login'])) {
-        if ($_FILES) {
-          $info = new SplFileInfo($_FILES['avatar']['name']);
-          $type = $info->getExtension();
-          switch ($type) {
-            case 'png':
-            case 'jpg':
-            case 'jpeg':
-            case 'gif':
-              move_uploaded_file($_FILES['avatar']['tmp_name'], 'foto/' . $_POST['new_login'] . '_avatar.' . "$type");
-              break;
-            case '':
-              break;
-            default:
-              echo "Неверный формат файла, только png, jpg, jpeg, gif";
-              break;
-          }
-        }
-      } else {
-        echo 'Нет логина!';
-      }
-    } */
-    checkReg($db_con);
+    if ($_POST) {
+      $user = new User;
+      $user->registration($_POST['new_login'], $_POST['new_password'], $_POST['repeat_new_password'], $db_con);
+    }
     if (!empty($_SESSION['authUser'])) {
       $url = '/auth.php';
       redirect($url);
     }
     ?>
-    <form method="post" class="form-registr"> <!-- enctype="multipart/form-data" -->
+    <form method="post" class="form-registr">
       <h1>Регистрация</h1>
-      <!-- <div class="block-field name">
-        <label class="block-field_label" for="user_name" >Имя:</label>
-        <input type="text" name="user_name" id="user_name">
-      </div> -->
       <div class="block-field login">
         <label class="block-field_label" for="new_login">*Логин:</label>
         <input type="text" name="new_login" id="new_login">
@@ -66,13 +41,8 @@ include_once 'include/functions.php';
         <label class="block-field_label" for="repeat_new_password">*Повтор пароля:</label>
         <input type="password" name="repeat_new_password" id="repeat_new_password">
       </div>
-      <!-- <div class="block-field password">
-        <label class="block-field_label" for="avatar">Аватар:</label>
-        <input type="file" name="avatar">
-      </div> -->
       <button class="button-auth" type="submit">Зарегистрироваться</button>
     </form>
-    <?php /*  }  */ ?>
   </main>
 </body>
 
